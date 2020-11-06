@@ -16,7 +16,7 @@ const Logo = styled(Title)`
   text-shadow: 1px 1px 4px #380502;
 `
 
-const Navbar= () =>{
+export function Navbar(){
   return(
     <NavbarStyled>
       <Logo>
@@ -26,4 +26,3 @@ const Navbar= () =>{
   )
 }
 
-export default Navbar;

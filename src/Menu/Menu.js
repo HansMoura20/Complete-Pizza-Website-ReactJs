@@ -15,16 +15,19 @@ const MenuStyled = styled.div`
   }
 `;
 
-const Menu = () => {
+export function Menu({setOpenFood}){
   return (
     <MenuStyled>
       {Object.entries(foods).map(([sectionName, foods]) => (
       <>
       <h1>{sectionName}</h1>
         <FoodGrid>
-  {/* Loop through the foods array and return each element */}
-        {foods.map(food => (
-          <Food img={food.img}>
+          {foods.map(food => (
+            <Food 
+              img={food.img} 
+              onClick={() => {
+              setOpenFood(food);
+            }}>
             <FoodLabel>{food.name}</FoodLabel>
           </Food>
           ))}
@@ -35,4 +38,4 @@ const Menu = () => {
   );
 }
 
-export default Menu
+
