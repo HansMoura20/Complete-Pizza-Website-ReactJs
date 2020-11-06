@@ -5,10 +5,16 @@ export const FoodGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
+  padding: 0 30px;
   
 
   @media screen and (max-width: 990px){
     grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: 500px){
+    font-size: 15px;
+    padding: 0;
   }
 
 `
@@ -30,10 +36,17 @@ export const Food = styled(Title)`
   background-size: cover;
   filter: contrast(75%);
   border-radius: 7px;
-  box-shadow: 0px 0px 10px 0px grey;
+  margin-top: 5px;
+  transition-property: box-shadow margin-top filter;
+  transition-duration: .1s;
+  box-shadow: 0px 0px 2px 0px grey;
+
   &:hover{
     cursor: pointer;
-    opacity: 0.7;
+    filter: contrast(100%);
+    margin-top: 0px;
+    margin-bottom: 5px;
+    box-shadow: 0px 5px 10px 0px grey;
   }
 
   @media screen and (max-width: 700px){
