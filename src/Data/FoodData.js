@@ -1,3 +1,10 @@
+export function formatPrice(price){
+  return price.toLocaleString('en-AU', {
+    style: 'currency',
+    currency: 'AUD'
+  })
+}
+
 export const foodItems = [
   {
     name: "Cheese Pizza",
