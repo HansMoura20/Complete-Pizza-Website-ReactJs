@@ -10,6 +10,7 @@ export const FoodGrid = styled.div`
 
   @media screen and (max-width: 990px){
     grid-template-columns: 1fr 1fr;
+    font-size: 17px;
   }
 
   @media screen and (max-width: 500px){
