@@ -1,28 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
-import {pizzaRed} from "../Styles/colors";
-import {Title} from "../Styles/title";
+import { Link } from "react-scroll";
+import { Nav, NavLink, NavIcon, Bars, BarsNum} from './NavbarElements';
 
-const NavbarStyled = styled.div`
-  background-color: ${pizzaRed};
-  padding: 10px;
-  position: fixed;
-  width: 100%;
-  z-index: 999;
-`
-const Logo = styled(Title)`
-  font-size: 20px;
-  color: white;
-  text-shadow: 1px 1px 4px #380502;
-`
-
-export function Navbar(){
-  return(
-    <NavbarStyled>
-      <Logo>
-      Pizzzza <span role="img" aria-label="pizza slice">🍕</span>
-      </Logo>
-    </NavbarStyled>
+const Navbar = ({orders, toggle}) => {
+  return (
+    <>
+      <Nav>
+        <Link
+          activeClass="active"
+          to="hero-section"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}>
+            <NavLink>Pizza</NavLink>
+          </Link>
+        
+        {
+        orders.length === 0 ? (
+        <NavIcon onClick={toggle}>
+          <p>Order</p>
+          <Bars/> 
+          <BarsNum>0</BarsNum>
+          </NavIcon> ) 
+          : 
+          ( <NavIcon onClick={toggle}>
+              <p>Orders</p>
+              <Bars/> 
+              <BarsNum>{orders.length}</BarsNum>
+            </NavIcon> )
+          }
+      </Nav>
+    </>
   )
 }
 
+export default Navbar

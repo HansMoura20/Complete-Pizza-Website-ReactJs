@@ -1,40 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
 import {foods} from "../Data/FoodData";
-import {FoodLabel, Food, FoodGrid} from "./FoodGrid";
+// import {FoodLabel, Food, FoodGrid} from "./FoodGrid";
 import { formatPrice } from "../Data/FoodData";
-
-const MenuStyled = styled.div`
-  height: 1000px;
-  margin: 0px 400px 50px 20px;
-
-  @media screen and (max-width: 500px){
-    h1{
-      font-size: 25px;
-    }
-  }
-`;
+import { MenuStyled, FoodInfo, Food, FoodGrid,FoodHeading, FoodTitle, FoodPrice, FoodCard, FoodDesc, FoodButton} from "./MenuElements";
 
 export function Menu({setOpenFood}){
   return (
     <MenuStyled>
+      <FoodHeading id="menu-section">Choose your favorite</FoodHeading>
       {Object.entries(foods).map(([sectionName, foods]) => (
       <>
-      <h1>{sectionName}</h1>
         <FoodGrid>
-          {foods.map(food => (
-            <Food 
-              img={food.img} 
-              onClick={() => {
-              setOpenFood(food);
-            }}>
-            <FoodLabel>
-              <div>{food.name}</div>
-              <div>{formatPrice(food.price)}</div>
-            </FoodLabel>
-          </Food>
-          ))}
+          {foods.map((food, index) => {
+            return(
+              <FoodCard key={index}>
+                <Food img={food.img} onClick={() => {setOpenFood(food)}}/>
+                  <FoodInfo>
+                    <FoodTitle>{food.name}</FoodTitle>
+                    <FoodDesc>{food.desc}</FoodDesc>
+                    <FoodPrice><span>From</span> {formatPrice(food.price)}*</FoodPrice>
+                    <FoodButton onClick={() => {setOpenFood(food)}}>Add to Card</FoodButton>
+                  </FoodInfo>
+              </FoodCard>
+            );
+          })}
         </FoodGrid>
+
       </>
       ))}
     </MenuStyled>
